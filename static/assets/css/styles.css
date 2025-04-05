@@ -1,0 +1,203 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #f4f4f9;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #1c1c1e;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h2, h3 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 100%;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus, select:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+/* Radio Button Styles */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.radio-group input[type="radio"] {
+    appearance: none;
+    width: 18px;  /* Increased width */
+    height: 18px; /* Increased height */
+    border: 2px solid #2575fc; /* Increased border size */
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #2575fc;
+}
+
+.radio-group label {
+    font-weight: normal;
+    color: #ddd;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Radio Button - Visual Circle */
+.radio-group input[type="radio"]::before {
+    content: "";
+    display: block;
+    width: 8px;  /* Increased inner circle size */
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+/* Button Styles */
+button.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a11cb;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+button.submit-btn:hover {
+    background-color: #960fb8;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2c2c2e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    color: #f4f4f9;
+    font-size: 14px;
+}
+
+table th {
+    background-color: #2575fc;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #333;
+    transition: background-color 0.3s ease;
+}
+
+/* Charts */
+canvas {
+    margin-top: 30px;
+}
+
+#transaction-chart, #credit-chart, #debit-chart {
+    max-width: 30%;
+    max-height: 100px;
+    margin: 0 auto;
+}
+
+/* Animations and Transitions */
+.container, table, h2, h3 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+button, input, table td, table th {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2, h3 {
+        font-size: 1.5em;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+}

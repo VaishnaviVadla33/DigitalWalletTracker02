@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='financial_history.css') }}">
+</head>
+
+<body>
+    <div class="container mt-5">
+            <!-- Debug Information -->
+            <div class="alert alert-info">
+                <h4>Debug Information:</h4>
+                <p>Number of Credit Transactions: {{ credit_transactions|length }}</p>
+                <p>Number of Debit Transactions: {{ debit_transactions|length }}</p>
+                {% if credit_transactions %}
+                    <p>Sample Credit Transaction:</p>
+                    <pre>{{ credit_transactions[0] }}</pre>
+                {% else %}
+                    <p>No credit transactions found</p>
+                {% endif %}
+            </div>
+
+        <h2 class="text-center mb-5">Transaction History</h2>
+        
+        <!-- Credit Transactions -->
+        <div class="mb-4">
+            <h3>Credit Transactions</h3>
+            {% if credit_transactions %}
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Amount</th>
+                        <th>Payee Type</th>
+                        <th>Personal Reference</th>
+                        <th>Transaction Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in credit_transactions %}
+                    <tr>
+                        <td>{{ transaction.name }}</td>
+                        <td>{{ transaction.transaction_id }}</td>
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.time }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.payee_type }}</td>
+                        <td>{{ transaction.personal_reference }}</td>
+                        <td>{{ transaction.transaction_rating }}</td>                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="alert alert-warning">No credit transactions found</div>
+            {% endif %}
+        </div>
+
+        <!-- Debit Transactions -->
+        <div class="mb-4">
+            <h3>Debit Transactions</h3>
+            {% if debit_transactions %}
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Amount</th>
+                        <th>Payee Type</th>
+                        <th>Personal Reference</th>
+                        <th>Transaction Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in debit_transactions %}
+                    <tr>
+                        <td>{{ transaction.name }}</td>
+                        <td>{{ transaction.transaction_id }}</td>
+                        <td>{{ transaction.date }}</td>
+                        <td>{{ transaction.time }}</td>
+                        <td>{{ transaction.amount }}</td>
+                        <td>{{ transaction.payee_type }}</td>
+                        <td>{{ transaction.personal_reference }}</td>
+                        <td>{{ transaction.transaction_rating }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="alert alert-warning">No debit transactions found</div>
+            {% endif %}
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="/" class="btn btn-primary btn-lg">Go to Form</a>
+            <a href="/dashboard" class="btn btn-secondary btn-lg">Back to Dashboard</a>
+        </div>
+    </div>
+    <!-- Add this script to check if CSS is loaded -->
+    <script>
+        window.onload = function() {
+            const styles = window.getComputedStyle(document.body);
+            console.log('Body background:', styles.background);
+            if (!styles.background.includes('linear-gradient')) {
+                console.error('CSS may not be loaded properly');
+            }
+        };
+    </script>
+</body>
+
+</html>

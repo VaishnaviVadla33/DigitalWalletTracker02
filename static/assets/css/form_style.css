@@ -1,0 +1,160 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #f4f4f9;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #1c1c1e;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="time"], select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="time"]:focus, select:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+}
+
+/* Radio Button Styles */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.radio-group input[type="radio"] {
+    appearance: none;
+    width: 24px;  /* Increased width */
+    height: 24px; /* Increased height */
+    border: 2px solid #2575fc; /* Increased border size */
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #2575fc;
+}
+
+.radio-group label {
+    font-weight: normal;
+    color: #ddd;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Radio Button - Visual Circle */
+.radio-group input[type="radio"]::before {
+    content: "";
+    display: block;
+    width: 12px;  /* Increased inner circle size */
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+/* Button Styles */
+button.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a11cb;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+button.submit-btn:hover {
+    background-color: #960fb8;
+}
+
+/* Animations and Transitions */
+.container, h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+}
